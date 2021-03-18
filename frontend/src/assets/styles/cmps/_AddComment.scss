@@ -1,0 +1,39 @@
+.comment-form-wrapper {
+  border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+}
+
+.add-comment-form {
+  &.detailed {
+    padding-left: 16px;
+  }
+
+  display: flex;
+  padding-top: 0px;
+  padding-right: 16px;
+  padding-left: 4px;
+  line-height: 18px;
+  min-height: 56px;
+  align-items: center;
+
+  button {
+    border: 0;
+    color: #0095f6;
+    color: rgba(var(--d69, 0, 149, 246), 1);
+    display: inline;
+    padding: 0;
+    position: relative;
+  }
+
+  .disabled {
+    opacity: 0.3;
+  }
+}
+
+input[type="text"] {
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  border: none;
+  background: transparent;
+  flex: 1;
+  height: 13px;
+  outline: none;
+}

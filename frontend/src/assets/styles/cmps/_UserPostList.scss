@@ -1,0 +1,49 @@
+.user-img-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 28px;
+    @include for-mobile-layout {
+        grid-gap: 3px;
+    }
+
+    .img-container {
+        position: relative;
+        @include aspect-ratio(1, 1);
+        
+
+        .saved-img {
+            @include for-mobile-layout {
+                position: absolute;
+            }
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .trash {
+            @include for-mobile-layout {
+                display: none;
+            }
+            position: absolute;
+            z-index: 5;
+            height: 20px;
+            width: 15px;
+            top: 2px;
+            right: 4px;
+            cursor: pointer;
+        }
+
+        .edit {
+            @include for-mobile-layout {
+                display: none;
+            }
+            position: absolute;
+            z-index: 5;
+            height: 20px;
+            width: 15px;
+            top: 2px;
+            left: 4px;
+            cursor: pointer;
+        }
+    }
+}

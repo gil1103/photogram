@@ -1,0 +1,96 @@
+.post-details {
+  display: flex;
+  justify-content: center;
+
+  @include for-mobile-layout {
+    flex-direction: column;
+  }
+
+  .details-mobile {
+    @include for-narrow-layout {
+      display: none;
+    }
+  }
+
+  .details-pic {
+    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    @include for-mobile-layout {
+      position: relative;
+      padding-bottom: 100%;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      flex: 2;
+      @include for-mobile-layout {
+        object-fit: cover;
+        position: absolute;
+      }
+    }
+  }
+  .nav-bar {
+    display: flex;
+    align-self: center;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 0;
+    border-top: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    border-right: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    background: rgba(var(--d87, 255, 255, 255), 1);
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+
+    .post-details-container {
+      flex: 1;
+      .detailed-comments {
+        padding-left: 8px;
+      }
+
+      .details-wide {
+        @include for-mobile-layout {
+          display: none;
+        }
+      }
+
+      .details-header {
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+        padding-left: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        .details-created-by {
+          justify-content: space-between;
+          padding-left: 8px;
+          flex-grow: 2;
+        }
+
+        .details-dots {
+          font-size: 20px;
+          align-self: center;
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .likes-on-postDetails{
+      padding-left: 8px;
+    }
+    
+    .time-span-details {
+      font-size: 10px;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      padding-left: 8px;
+      color: rgba(var(--f52, 142, 142, 142), 1);
+    }
+  }
+}

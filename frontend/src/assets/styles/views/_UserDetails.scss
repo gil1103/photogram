@@ -1,0 +1,343 @@
+.user-details {
+  @include for-narrow-layout {
+    padding: 30px 20px 0;
+  }
+
+  .user-profile-header {
+    @include for-mobile-layout {
+      padding-bottom: 0;
+      margin-left: 16px;
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    display: flex;
+    padding-bottom: 44px;
+    align-items: stretch;
+    border-bottom: 0px solid #000;
+  }
+
+  .user-profile-img-cont {
+    padding-left: 56px;
+    margin-right: 86px;
+    @include for-mobile-layout {
+      padding-left: 0;
+      margin-right: 28px;
+    }
+
+    .user-profile-img {
+      width: 150px;
+      height: 150px;
+      @include for-mobile-layout {
+        width: 77px;
+        height: 77px;
+      }
+    }
+  }
+
+  .user-details-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    @include for-mobile-layout {
+      width: 100%;
+      margin-right: 16px;
+    }
+
+    .user-details-heading {
+      display: flex;
+      align-items: center;
+      @include for-mobile-layout {
+        flex-direction: column;
+        align-items: initial;
+      }
+
+      .user-details-1st-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        @include for-mobile-layout {
+          margin-bottom: 8px;
+        }
+
+        .user-details-name {
+          font-weight: 300;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .edit-profile-container-wide {
+          @include for-mobile-layout {
+            display: none;
+          }
+
+          margin-left: 20px;
+
+          @include for-narrow-layout {
+            .edit-profile-wide {
+              background-color: transparent;
+              border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+              color: rgba(var(--f75, 38, 38, 38), 1);
+              cursor: pointer;
+              font-weight: 600;
+              padding: 5px 9px;
+              text-align: center;
+              border-radius: 4px;
+            }
+          }
+        }
+
+        .options-container {
+          margin-left: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .user-detail-options {
+            align-items: center;
+            justify-content: center;
+            background: 0 0;
+            border: 0;
+            cursor: pointer;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+
+            padding: 8px;
+            .options-img {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+
+      .edit-profile-container-mobile {
+        display: flex;
+
+        @include for-narrow-layout {
+          display: none;
+        }
+
+        .edit-profile-mobile {
+          width: 100%;
+          background-color: transparent;
+          border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+          color: rgba(var(--f75, 38, 38, 38), 1);
+          cursor: pointer;
+          font-weight: 600;
+          padding: 5px 9px;
+          text-align: center;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .user-status {
+      @include for-mobile-layout {
+        display: none;
+      }
+      margin-bottom: 20px;
+      display: flex;
+      list-style: none;
+      padding-left: 0px;
+
+      li:not(:last-child) {
+        font-size: 16px;
+        margin-right: 40px;
+      }
+    }
+
+    .name-wide {
+      @include for-mobile-layout {
+        display: none;
+      }
+
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: capitalize;
+
+      h1 {
+        display: inline;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .user-details-mobile {
+    @include for-narrow-layout {
+      display: none;
+    }
+    .name-mobile {
+      @include for-narrow-layout {
+        display: none;
+      }
+      padding: 0 16px 21px;
+      font-size: 14px;
+      line-height: 20px;
+      text-overflow: ellipsis;
+      text-transform: capitalize;
+
+      h1 {
+        display: inline;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+
+    .user-status-mobile {
+      margin-bottom: 20px;
+      display: flex;
+      list-style: none;
+      padding-left: 0px;
+
+      @include for-mobile-layout {
+        border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
+        padding: 12px 0;
+        justify-content: center;
+        margin: 0;
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      li:not(:last-child) {
+        margin-right: 57px;
+      }
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
+    color: #8e8e8e;
+    flex-direction: row;
+    @include for-mobile-layout {
+      justify-content: space-between;
+      justify-content: space-around;
+    }
+
+    .user-actions-container {
+      height: 52px;
+      justify-content: center;
+      align-content: center;
+      display: flex;
+      @include for-mobile-layout {
+        margin: 0;
+        padding: 0;
+      }
+
+      .user-actions {
+        display: flex;
+        align-items: center;
+
+        .user-actions-img {
+          @include for-mobile-layout {
+            height: 24px;
+            width: 24px;
+          }
+          height: 12px;
+          width: 12px;
+        }
+
+        .actions {
+          @include for-mobile-layout {
+            display: none;
+          }
+          margin-left: 6px;
+          text-transform: uppercase;
+          cursor: pointer;
+
+          .action-name {
+            @include for-mobile-layout {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include for-narrow-layout {
+    .user-actions-container:not(:last-child) {
+      margin-right: 60px;
+    }
+  }
+
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tagged-container {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    justify-content: center;
+
+    .tagged {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 350px;
+      margin-top: 60px;
+      margin-right: 44px;
+      margin-left: 44px;
+      margin-bottom: 60px;
+      flex: 0 0 auto;
+
+      .tagged-image {
+        background-image: url("../../img/tagged.JPG");
+        height: 62px;
+        width: 62px;
+        background-color: transparent;
+        background-size: 100%;
+      }
+
+      .tagged-heading-cont {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        flex: 0 0 auto;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        .tagged-heading {
+          display: block;
+          text-align: center;
+          font-weight: 300;
+          font-size: 28px;
+          line-height: 32px;
+          margin: -5px 0 -6px;
+        }
+      }
+
+      .bottom-heading-cont {
+        margin-bottom: 24px;
+        flex: 0 0 auto;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        .bottom-heading {
+          text-align: center;
+          display: block;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 18px;
+          margin: -3px 0 -4px;
+        }
+      }
+    }
+  }
+}

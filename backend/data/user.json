@@ -1,0 +1,13 @@
+{
+  "user": [
+    {
+      "_id": "u101",
+      "date_joined": "2019-07-02T04:14:22",
+      "fullname": "Abi Abambi",
+      "username": "abi@ababmi.com",
+      "password": "aBambi123",
+      "gender": "unspecified",
+      "imgUrl": "http://some-img"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+.avatr-container {
+  height: 116px;
+  width: 100%;
+
+  .avatar-list {
+    @include for-mobile-layout {
+      border-radius: 0;
+      border-right: none;
+      border-left: none;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: rgba(var(--d87, 255, 255, 255), 1);
+    border: 1px solid #dbdbdb;
+    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    border-radius: 3px;
+    margin-top: 0;
+    padding: 16px 0;
+    grid-gap: 6px;
+    padding: 15px 0;
+    width: 500px;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+
+    .overflow-scrolling {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .avatar-icon {
+      height: 100%;
+
+      .favorite-avatar-outer-border {
+        border: 3px solid red;
+        border-radius: 50%;
+      }
+
+      .favorite-avatar {
+        width: 56px;
+        height: 56px;
+        box-sizing: content-box;
+        border: 2px solid white;
+      }
+    }
+
+  }
+}

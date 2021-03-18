@@ -1,0 +1,38 @@
+.home-welcome {
+    height: 100vh;
+    margin: 0 auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), 
+    url('https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
+    background-position: center;
+    color: $primary-white;
+    line-height: 1.8;
+    
+    .home-heading {
+        font-size: 4.5rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .home-subheading {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding: 0 5px;
+    }
+
+    .home-cta-btn {
+        font-size: 1.5rem;
+        border: 1px solid  #90db17;
+        border-radius: 2em;
+        padding: 10px 20px;
+        background-color: rgba(43, 248, 25, 0.9);
+        text-align: center;
+        box-shadow: 0px 0px 20px -6px #999;
+
+        transition: all .2s;
+
+            &:hover {
+                transform: translateY(-5px);
+        }
+    }
+}

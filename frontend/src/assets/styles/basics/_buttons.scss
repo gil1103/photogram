@@ -1,0 +1,32 @@
+button {
+    background-color: transparent;
+    border: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    font-weight: 300;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    color: $primary-white;
+    background-color: $primary-light-clr;
+    border-radius: 4px;
+    padding: 6px 10px;
+    
+    transition: background-color .3s;
+
+    &:hover:not(.disabled-btn) {
+        background-color: darken($primary-light-clr, 5%);
+    }
+}
+
+.disabled-btn {
+    background-color: #bdbaba;
+    color: #8a8a8a;
+
+    &:hover {
+        background-color: darken(#bdbaba, 5%);
+    }
+
+}

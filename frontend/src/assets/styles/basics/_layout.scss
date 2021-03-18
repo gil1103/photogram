@@ -1,0 +1,16 @@
+.main-container {
+    display: grid;
+    @include for-narrow-layout{
+        grid-template-columns: 
+        minmax(1.6rem, 1fr)
+        minmax(auto, $normal-breakpoint)
+        minmax(1.6rem, 1fr);
+    }
+
+    & > * {
+        @include for-narrow-layout{
+            grid-column: 2;
+        }
+    }
+}
+
