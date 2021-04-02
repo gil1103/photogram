@@ -14,7 +14,7 @@ export class _NavBar extends Component {
             fulname: '',
             imgUrl: ''
         },
-        isSaved :false,
+        loggedInUserIsSaved :false,
         loggedInUserIsLike:false,
         isCommentFocus : false
     }
@@ -22,24 +22,22 @@ export class _NavBar extends Component {
     async componentDidMount() {
         const userCred = { username: 'gil', password: '111111' } //for demo only
         await this.props.login(userCred) //for demo only
-        const { loggedInUser, post, isCommentFocus } = this.props
+        const { post, isCommentFocus, loggedInUser } = this.props
         const loggedInUserIsLike = post.likes.filter(like => like._id === loggedInUser._id)
-        this.setState({ loggedInUserIsLike, isCommentFocus })
+        const loggedInUserIsSaved = loggedInUser.favoritePosts.includes(post._id)
+        this.setState({ isCommentFocus, loggedInUserIsLike, loggedInUserIsSaved })
     }
 
     onToggleLike = async (postId) => {
-        const { loggedInUserIsLike } = this.state
         const { loggedInUser } = this.props
         await this.props.toggleLike(postId, loggedInUser)
-        this.setState({ loggedInUserIsLike: !loggedInUserIsLike })
-        console.log('this.props:',this.props);
+        this.setState(prevState =>({ loggedInUserIsLike: !prevState.loggedInUserIsLike }))
     }
     
     onToggleSave = async (postId) => {
-        const { isSaved } = this.state
         const { loggedInUser } = this.props
         await this.props.toggleSave(postId, loggedInUser)
-        this.setState({ isSaved: !isSaved })
+        this.setState(prevState => ({ loggedInUserIsSaved: !prevState.loggedInUserIsSaved }))
     }
 
     onToggleFocus = () => {
@@ -52,11 +50,12 @@ export class _NavBar extends Component {
     render() {
         const { post, postId } = this.props
         let url = post.imgUrl
+       
         return (<section className="nav-container">
             <div className="nav-preview-header">
                 <ul className="nav-preview-header-list flex">
                     <li className={postId ? "nav-left-preview-icon" : "nav-preview-icon"} onClick={() => this.onToggleLike(post._id)}>
-                        {this.state.loggedInUserIsLike ? <svg aria-label="Unlike" className="_8-yf5 " fill="#ed4956" height="24"
+                        {this.state.loggedInUserIsLike.length>0 ? <svg aria-label="Unlike" className="_8-yf5 " fill="#ed4956" height="24"
                             viewBox="0 0 48 48" width="24"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
                             :
                             <svg aria-label="Like" className="_8-yf5 " fill="#262626" height="24"
@@ -74,7 +73,7 @@ export class _NavBar extends Component {
                     </li>
                 </ul>
                 <div className="nav-save-icon" onClick={() => this.onToggleSave(post._id)}>
-                    { this.state.isSaved ?
+                    { this.state.loggedInUserIsSaved ?
                         <svg aria-label="Remove" className="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 28.9 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1z"></path></svg>
                         :
                         <svg aria-label="Save" className="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z"></path></svg>}

@@ -7,6 +7,10 @@
       border-radius: 0;
       border-right: none;
       border-left: none;
+      overflow: scroll;
+      padding-right: 18px;
+      padding-left: 18px;
+      background: rgba(var(--d87, 255, 255, 255), 1);
     }
 
     display: grid;
@@ -45,6 +49,5 @@
         border: 2px solid white;
       }
     }
-
   }
 }

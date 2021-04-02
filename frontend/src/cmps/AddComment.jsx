@@ -34,7 +34,8 @@ export class _AddComment extends Component {
         return (
             <div className="comment-form-wrapper">
                 <form onSubmit={this.onSaveComment} className={postId? "add-comment-form": "add-comment-form detailed"}>
-                    <input type="text"  ref={ input =>postId && this.props.isCommentFocus   && input && input.focus() }   name="description" value={this.state.currComment.txt} onChange={this.handleInput} placeholder="Add a comment..." />
+                    <input type="text"  ref={ input =>postId && this.props.isCommentFocus   && input && input.focus() }   
+                        name="description" value={this.state.currComment.txt} onChange={this.handleInput} placeholder="Add a comment..." />
                     <button type="submit" className={this.state.currComment.txt ? '' : 'disabled'}>Post</button>
                 </form>
             </div>

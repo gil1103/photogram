@@ -14,16 +14,15 @@ export class Uploader extends Component {
     this.setState({ imgUrl: secure_url, isUploading: false })
     this.props.onFinishUpload(secure_url)
   }
-  
+
   render() {
     const { imgUrl, isUploading} = this.state
     const uploadStyle = {
       backgroundImage: `url(${imgUrl})`
     }
-    
 
     return (
-      <div>
+      <div className="uploader-container">
         {!imgUrl && <label className="uploader-label" htmlFor="imageUploader">
           {isUploading ? 'Uploading....' : ''}
           <CloudUploadIcon className="uploading-img"></CloudUploadIcon>

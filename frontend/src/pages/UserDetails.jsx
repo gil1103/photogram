@@ -6,12 +6,12 @@ import { UserSavedList } from '../cmps/UserSavedList.jsx'
 import { UserLikedList } from '../cmps/UserLikedList.jsx'
 import { Uploader } from '../cmps/Uploader.jsx'
 import { Avatar } from '@material-ui/core'
-import { postService } from './../service/postService';
+import { postService } from './../service/postService'
 
 export class _UserDetails extends Component {
   state = {
-    userPosts: null,
-    option: 'post',
+    option: '',
+    title:'',
     post: {
       title: '',
       createdAt: null,
@@ -22,42 +22,32 @@ export class _UserDetails extends Component {
   }
 
   componentDidMount() {
-    this.props.match.path === '/profile/saved' ? this.setState({ option: 'saved' }) : this.setState({ option: 'post' })
-    this.props.match.path === '/profile/liked' ? this.setState({ option: 'liked' }) : this.setState({ option: 'post' })
     this.props.loadPosts()
-    const userPosts = this.getUserPosts()
-    this.setState({ userPosts })
-
+    this.props.match.path === '/profile' ? this.setState({ option: 'post' }) : this.setState({ option: '' })
+    this.props.match.path === '/profile/liked' ? this.setState({ option: 'liked' }) : this.setState({ option: '' })
+    this.props.match.path === '/profile/add' ? this.setState({ option: 'igtv' }) : this.setState({ option: '' })
   }
-
+  
   onEditPost = (postId) => {
     console.log('postId-onEditPost', postId);
     this.loadPost(postId)
     this.onToggleOption('igtv')
   }
-
+  
   loadPost = async (postId) => {
     if (postId) {
-      console.log('postId-loadPost', postId);
       const post = await postService.getById(postId)
-      console.log('post-loadPost', post);
       this.setState({ post })
     }
   }
-
+  
   onToggleOption = (option) => {
+    this.setState({ option: '' })
     this.setState({ option })
   }
 
   onRemove = (postId) => {
     this.props.removePost(postId)
-  }
-
-  getUserPosts = () => {
-    const userPosts = this.props.posts.filter(post => {
-      return post.byUser._id === this.props.loggedInUser._id
-    })
-    return userPosts
   }
 
   handleInput = ({ target }) => {
@@ -92,7 +82,10 @@ export class _UserDetails extends Component {
 
   render() {
     const { loggedInUser, posts } = this.props
-    const { post, userPosts } = this.state
+    const { post, option } = this.state
+    console.log('this.props.match.path',this.props.match.path);
+    console.log('option', option);
+    console.log('posts', posts);
     return (
       <section className="user-details">
         <div className="user-container">
@@ -161,24 +154,27 @@ export class _UserDetails extends Component {
               </span>
             </span>
           </div>
-          {this.state.option === 'post' && <div className="postlist-container">
+          {(option === 'post' || this.props.match.path === '/profile') && (option !== 'saved')&& (option !== 'liked')&& (option !== 'tagged')&& (option !== 'igtv' )&& (this.props.match.path !==  '/profile/saved') && 
+          <div className="postlist-container">
             <UserPostList posts={posts} loggedInUser={loggedInUser} onRemove={this.onRemove} onEditPost={this.onEditPost} />
           </div>}
-          {this.state.option === 'igtv' &&
+          {option === 'igtv' && 
             <form onSubmit={this.onSavePost} className="upload-form">
-              <Uploader onFinishUpload={this.onUploadPostImage} />
-              <label className="title-container"><h1 className="uploading-title">Upload a Picture</h1>
-                <input type="text" name="title" value={post.title} onChange={this.handleInput} autoComplete="off" />
+              <label className="title-container">
+                <input className="title-input" type="text" name="title" value={post.title} placeholder="post title" onChange={this.handleInput} autoComplete="off" />
+                <Uploader onFinishUpload={this.onUploadPostImage} />
+                <h1 className="uploading-title">Upload a Picture</h1>
               </label>
               <button className="upload-btn">Upload</button>
             </form>}
-          {this.state.option === 'saved' && <div className="postlist-container">
-            <UserSavedList userPosts={userPosts} loggedInUser={loggedInUser} />
+          {(option === 'saved' ) && <div className="postlist-container">
+            <UserSavedList posts={posts} loggedInUser={loggedInUser} />
           </div>}
-          {this.state.option === 'liked' && <div className="postlist-container">
-            <UserLikedList posts={userPosts} loggedInUser={loggedInUser} />
+          {(option === 'liked' || this.props.match.path === '/profile/liked') && 
+          <div className="postlist-container">
+            <UserLikedList posts={posts} loggedInUser={loggedInUser} />
           </div>}
-          {this.state.option === 'tagged' &&
+          {option === 'tagged' &&
             <section className="tagged-container">
               <div className="tagged">
                 <div className="tagged-image"> </div>

@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 import { loadPosts, filterPosts } from '../store/actions/postActions'
 import { PostFilter } from './PostFilter.jsx'
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
+import { useMediaQuery } from 'react-responsive'
+
 
 export function AppHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,20 +15,32 @@ export function AppHeader() {
         dispatch (filterPosts(filterBy))
         dispatch(loadPosts(filterBy))
     }
+    
+    const isMobile = useMediaQuery({ query: '(max-width: 460px)' })
+
+    const handleModal = () => {
+        console.log('isMobile',isMobile);
+        if (isMobile){
+            window.location.href='/profile'
+        }else setIsModalOpen(!isModalOpen)
+    }
+
 
     return (
         <section className="header-wrapper">
-            <header className="main-header main-container">
-                <div className="flex flex-center flex-space-between">
+            <header className="main-header main-container header-mobile">
+                <div className="flex flex-center header-standard-view">
                     <span className="logo flex"> <Link to="/"><h1>photogram</h1></Link></span>
                     <PostFilter onSetFilter={onSetFilter} />
                     <nav className="header-list-container">
                         <div className="header-list flex flex-center ">
                             <div><Link to="/"><img src={require('../assets/img/home.png').default} alt='' /></Link></div>
                             <div><Link to="/msg"><img src={require('../assets/img/msg.png').default} alt='' /></Link></div>
-                            <div><Link to="/explore"><img src={require('../assets/img/explore.JPG').default} alt='' /></Link></div>
+                            <div className="header-list-explore"><Link to="/explore"><img src={require('../assets/img/explore.JPG').default} alt='' /></Link></div>
+                            <div className="header-list-add"><Link to={'/profile/add'}><AddBoxOutlinedIcon/></Link></div>
                             <div><Link to="/profile/liked"><img src={require('../assets/img/like.png').default} alt='' /></Link></div>
-                            <div className= { isModalOpen ?"modal-btn-border" : "modal-btn"} onClick={() => setIsModalOpen(!isModalOpen)}>
+                            {/* <div className= {isModalOpen ? "modal-btn-border" : "modal-btn"} onClick={() => setIsModalOpen(!isModalOpen)}> */}
+                            <div className= {isModalOpen ? "modal-btn-border" : "modal-btn"} onClick={handleModal}>
                                 <img className={isModalOpen ? "logo-outer-border" : ''} src={require('../assets/img/profile.JPG').default} alt='' />
                                 {isModalOpen && (
                                     <div className="pos-abs">

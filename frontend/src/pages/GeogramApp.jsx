@@ -11,13 +11,13 @@ import { login } from '../store/actions/userActions.js' //for demo
 class _GeogramApp extends Component {
 
      async componentDidMount () {
-        // if (!this.props.loggedInUser) this.props.history.push('/login')
-        this.props.loadPosts()
-        this.props.loadUsers()
-
-        const userCred = { username: 'gil', password: '111111' } //for demo only
-        await this.props.login(userCred) //for demo only
-    }
+         const userCred = { username: 'gil', password: '111111' } //for demo only
+         await this.props.login(userCred) //for demo only
+         // if (!this.props.loggedInUser) this.props.history.push('/login')
+         this.props.loadPosts()
+         this.props.loadUsers()
+         
+     }
 
     onRemove = (postId) => {
         this.props.removePost(postId)

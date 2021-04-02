@@ -11,7 +11,6 @@ export function userReducer(state = initialState, action) {
         case 'SET_USER':
             return { ...state, loggedInUser: action.user }
         case 'SET_USERS':
-            console.log('localLoggedinUser',localLoggedinUser);
             return { ...state, users: action.users }
         case 'REMOVE_USER':
             return {

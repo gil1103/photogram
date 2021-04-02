@@ -1,9 +1,9 @@
 .nav-container {
   padding-top: 4px;
 
-  @include for-mobile-layout{
-      border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
-  }
+  // @include for-mobile-layout{
+  //     border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+  // }
 
   .nav-preview-header {
     padding-top: 8px;
@@ -25,6 +25,7 @@
 
     .preview-icon {
       cursor: pointer;
+      padding: 8px;
     }
 
     .nav-left-preview-icon {

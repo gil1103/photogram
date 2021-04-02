@@ -11,7 +11,7 @@ export class _FavoriteBarList extends Component {
         const { loggedInUser } = this.props
         return (
             <div className="avatr-container">
-               {loggedInUser && <OverflowScrolling className="avatar-list overflow-scrolling">
+               {loggedInUser && <OverflowScrolling className="avatar-list">
                     {loggedInUser.favorites?.map(favorite => {
                         return <FavoriteBar key={favorite.id} favorite={favorite} />
                     })}

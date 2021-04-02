@@ -288,6 +288,10 @@
     justify-content: center;
 
     .tagged {
+      @include for-mobile-layout {
+        margin-top: 35px;
+      }
+
       display: flex;
       flex-direction: column;
       align-items: center;

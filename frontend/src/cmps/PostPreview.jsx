@@ -29,7 +29,6 @@ export class _PostPreview extends Component {
       borderRadius: "50%"
     }
 
-
     return (
       <section className="post-preview ">
         <div className="preview-header flex">

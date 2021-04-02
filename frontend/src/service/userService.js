@@ -30,7 +30,6 @@ function remove(userId) {
 }
 
 async function update(user) {
-    console.log('UPDATE!')
     var updatedUser = await httpService.put(`user/${user._id}`, user)
     if (getLoggedinUser()._id === updatedUser._id) _saveLocalUser(updatedUser)
     return updatedUser
@@ -43,13 +42,11 @@ async function saveFavorite(postId, loggedInUser) {
     if (user.favoritePosts.includes(postId)) {
         user.favoritePosts = user.favoritePosts.filter(favoritePost =>
             favoritePost !== postId)
-            console.log('IF in FAV!', user.favoritePosts)
     } else {
-        console.log('ELSE in FAV!')
         user.favoritePosts.unshift(postId)
     }
-    const savedUser = await update(user)
-    console.log('savedUser', savedUser)
+    // const savedUser = await update(user)
+    // console.log('savedUser', savedUser)
     return user
 }
 

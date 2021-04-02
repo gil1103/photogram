@@ -1,53 +1,82 @@
 .upload-form {
-    flex-direction: column;
-    align-items: center;
-    margin: 60px auto 44px;
-    padding-left: 44px;
-    padding-right: 44px;
-    text-align: center;
-    max-width: 438px;
-    width: max-content;
+  @include for-mobile-layout{
+    margin-top: 17px;
+  }
+  
+  flex-direction: column;
+  align-items: center;
+  margin: 60px auto 44px;
+  padding-left: 44px;
+  padding-right: 44px;
+  text-align: center;
+  max-width: 438px;
+  width: max-content;
+
+  .uploader-container {
+    padding-top: 9px;
 
     .uploader-label {
-        display: flex;
+      display: flex;
 
-        .uploading-img {
-            width: 62px;
-            height: 62px;
-            margin: 0px;
-            cursor: pointer;
-        }
-    }
-    .title-container {
-        margin: 18px 0 24px;
-
-        .uploading-title {
-            font-weight: 300;
-            font-size: 28px;
-            line-height: 32px;
-            margin: -5px 0 -6px;
-        }
-    }
-
-    .upload-btn {
-        border: 1px solid transparent;
-        background-color: rgba(var(--d69, 0, 149, 246), 1);
-        border-radius: 4px;
+      .uploading-img {
+        width: 62px;
+        height: 62px;
+        margin: 0px;
         cursor: pointer;
-        font-weight: 600;
-        padding: 5px 9px;
-        text-align: center;
-        text-overflow: ellipsis;
-        font: inherit;
-        font-size: 14px;
-        line-height: 18px;
-        color: #ffffff;
+      }
+    }
+  }
+
+  .title-container {
+    margin: 18px 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-input {
+      padding-left: 115px;
+      align-items: center;
+      display: flex;
+      border: solid 1px rgba(var(--b6a, 219, 219, 219), 1);
+      border-radius: 3px;
+      max-width: fit-content;
+      background: rgba(var(--b3f, 250, 250, 250), 1);      padding-top: 5px;
+      padding-bottom: 5px;
+
+    }
+    
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: gray;
+      opacity: 1; /* Firefox */
     }
 
-    .uploader {
-        height: 278px;
-        width: 278px;
-        background-size: contain, cover;
-        background-repeat: no-repeat;
+    .uploading-title {
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 32px;
+      margin: -5px 0 -6px;
     }
+  }
+
+  .upload-btn {
+    border: 1px solid transparent;
+    background-color: rgba(var(--d69, 0, 149, 246), 1);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 5px 9px;
+    text-align: center;
+    text-overflow: ellipsis;
+    font: inherit;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+  }
+
+  .uploader {
+    height: 245px;
+    width: 278px;
+    background-size: contain, cover;
+    background-repeat: no-repeat;
+  }
 }

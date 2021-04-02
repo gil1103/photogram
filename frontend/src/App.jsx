@@ -15,7 +15,7 @@ export class App extends Component {
     return (
       <>
         <AppHeader />
-        <main className="main-container">
+        <main className="main-container main-container-main">
           <Switch>
             <Route component={PostEdit} path="/post/add" />
             <Route component={PostEdit} path="/post/edit/:postId?" />
