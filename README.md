@@ -4,6 +4,7 @@ On this social media app, users can engage with one another online, like/unlike 
 upload images, manage their posts such assaving to favorites and taging relevant posts
 
 HIGHLIGHTS:
+
 -user authentication
 
 -share on facebook
